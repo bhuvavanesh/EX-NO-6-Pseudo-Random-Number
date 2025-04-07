@@ -1,7 +1,7 @@
 # EX-NO-6-Pseudo-Random-Number
 
-## NAME:MOHAMMED FAIZAL J
-## REG NO:212222100027
+## NAME:GOPIKRISHNAN M
+## REG NO:212223043001
 
 
 # AIM: 
@@ -21,36 +21,56 @@ rand(time(0));
 
 # PROGRAM:
 ```
-
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+ #include <string.h>
+ int main() {
+ int i, j, k, l;
+ char a[20], c[20], d[20];
+ printf("\n\t\tRAIL FENCE TECHNIQUE\n");
 
-int main() 
-{
-    int count, min, max;
-    printf("Enter the number of random numbers to generate: ");
-    scanf("%d", &count);
-    printf("Enter the minimum value: ");
-    
-    scanf("%d", &min);
-    printf("Enter the maximum value: ");
-    scanf("%d", &max);
-    srand(time(NULL));
-    printf("Pseudorandom numbers:\n");   
-    for (int i = 0; i < count; i++) 
-    {
-        int random_number = (rand() % (max - min + 1)) + min;
-        printf("%d\n", random_number);
-    }
-    return 0;
-}
+ printf("\nEnter the input string: ");
+ fgets(a, sizeof(a), stdin);
+
+a[strcspn(a, "\n")] = '\0';
+ l = strlen(a);
+ for (i = 0, j = 0; i < l; i++) {
+ if (i % 2 == 0) {
+ c[j++] = a[i];
+ }
+ }
+ for (i = 0; i < l; i++) {
+ if (i % 2 == 1) {
+ c[j++] = a[i];
+ }
+ }
+ c[j] = '\0'; 
+ printf("\nCipher text after applying rail fence: %s\n", c);
+ // Rail fence decryption
+ if (l % 2 == 0) {
+ k =l / 2;
+ } else {
+ k =(l / 2) + 1;
+ }
+ for (i = 0, j = 0; i < k; i++) {
+ d[j] = c[i];
+ j += 2;
+ }
+ for (i = k, j = 1; i < l; i++) {
+d[j] = c[i];
+ j += 2;
+ }
+ d[l] = '\0'; 
+ printf("\nText after decryption: %s\n", d);
+ return 0; 
+ }
+
 ```
 
 
 # OUTPUT:
 
-<img width="347" alt="image" src="https://github.com/user-attachments/assets/3d4a60e8-056e-42e1-9639-659e37f1ac81">
+![image](https://github.com/user-attachments/assets/be93900f-f97d-4bc7-9e01-0119b0d3566d)
+
 
 
 # RESULT:

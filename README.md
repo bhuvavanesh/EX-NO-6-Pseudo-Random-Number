@@ -22,55 +22,32 @@ rand(time(0));
 # PROGRAM:
 ```
 #include <stdio.h>
- #include <string.h>
- int main() {
- int i, j, k, l;
- char a[20], c[20], d[20];
- printf("\n\t\tRAIL FENCE TECHNIQUE\n");
-
- printf("\nEnter the input string: ");
- fgets(a, sizeof(a), stdin);
-
-a[strcspn(a, "\n")] = '\0';
- l = strlen(a);
- for (i = 0, j = 0; i < l; i++) {
- if (i % 2 == 0) {
- c[j++] = a[i];
+ #include <stdlib.h>
+ #include <time.h>
+ int main()
+ {
+ int count, min, max;
+ printf("Enter the number of random numbers to generate: ");
+ scanf("%d", &count);
+ printf("Enter the minimum value: ");
+ scanf("%d", &min);
+ printf("Enter the maximum value: ");
+ scanf("%d", &max);
+ srand(time(NULL));
+ printf("Pseudorandom numbers:\n");
+ for (int i = 0; i < count; i++)
+{
+ int random_number = (rand() % (max- min + 1)) + min;
+ printf("%d\n", random_number);
  }
- }
- for (i = 0; i < l; i++) {
- if (i % 2 == 1) {
- c[j++] = a[i];
- }
- }
- c[j] = '\0'; 
- printf("\nCipher text after applying rail fence: %s\n", c);
- // Rail fence decryption
- if (l % 2 == 0) {
- k =l / 2;
- } else {
- k =(l / 2) + 1;
- }
- for (i = 0, j = 0; i < k; i++) {
- d[j] = c[i];
- j += 2;
- }
- for (i = k, j = 1; i < l; i++) {
-d[j] = c[i];
- j += 2;
- }
- d[l] = '\0'; 
- printf("\nText after decryption: %s\n", d);
- return 0; 
+ return 0;
  }
 
 ```
 
 
 # OUTPUT:
-
-![image](https://github.com/user-attachments/assets/be93900f-f97d-4bc7-9e01-0119b0d3566d)
-
+![image](https://github.com/user-attachments/assets/46cd4dc0-27d7-43e6-86e7-fdd15f95cc6a)
 
 
 # RESULT:
